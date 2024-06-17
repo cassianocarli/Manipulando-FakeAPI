@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="blog">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da Notícia</title>
+
+    <script type="text/javascript" src="app.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <style>
+        .thumbnail{
+            width: 50%;
+            text-align: center;
+        }
+        .noticia0{
+            max-width: 100%;
+            text-align: center;
+        }
+    </style>
+    <li class="noticia0">
+        <div class=" itens">
+            <img class="thumbnail">
+            <div class="titulo"></div>
+            <div class="descricao"></div>
+        </div>
+    </li>
+    <script>
+        fetch('https://api-fake-blog.onrender.com/postagens/').then(resposta=>{
+    resposta.json().then((res=>{
+    
+          document.querySelector(`.noticia${0}`).childNodes[1].childNodes[1].src = res[1].thumbImage
+          document.querySelector(`.noticia${0}`).childNodes[1].childNodes[3].innerText = res[1].title
+          document.querySelector(`.noticia${0}`).childNodes[1].childNodes[5].innerText = res[1].description
+
+
+
+    }))
+})
+    </script>
+</body>
+
+</html>
